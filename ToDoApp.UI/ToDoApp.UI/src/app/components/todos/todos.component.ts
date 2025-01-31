@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToDo } from '../../models/todo.model';
 
 @Component({
   selector: 'app-todos',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './todos.component.css'
 })
 export class TodosComponent {
-
+  toDos: ToDo[] = [];
 }

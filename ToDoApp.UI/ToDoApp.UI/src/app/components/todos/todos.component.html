@@ -16,14 +16,14 @@
               <tr>
                 <th scope="col">Task</th>
                 <th scope="col">Date Created</th>
-                <th scope="col">Completed</th>
+                <th scope="col">Completed?</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+              <tr *ngFor="let toDo of toDos">
+                <th>{{ toDo.description }}</th>
+                <td>{{ toDo.createdDate }}</td>
+                <td>{{ toDo.isCompleted }}</td>
               </tr>
             </tbody>
           </table>
