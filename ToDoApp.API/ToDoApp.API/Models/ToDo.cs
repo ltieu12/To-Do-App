@@ -7,5 +7,9 @@
         public DateTime CreatedDate { get; set; }
         public bool IsCompleted { get; set; }
         public DateTime? CompletedDate { get; set; }
+
+        public bool IsRemoved { get; set; }
+
+        public DateTime? RemovedDate { get; set; }
     }
 }

@@ -20,7 +20,10 @@ namespace ToDoApp.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllToDos()
         {
-            var toDos = await _toDoDbContext.ToDos.ToListAsync();
+            var toDos = await _toDoDbContext.ToDos
+                .Where(x => x.IsRemoved == false)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
 
             return Ok(toDos);
         }
@@ -50,6 +53,24 @@ namespace ToDoApp.API.Controllers
             toDo.CompletedDate = DateTime.Now;
             await _toDoDbContext.SaveChangesAsync();
 
+            return Ok(toDo);
+        }
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> RemoveToDo([FromRoute] Guid id, ToDo toDoRemoveReq)
+        {
+            var toDo = await _toDoDbContext.ToDos.FindAsync(id);
+
+            if (toDo == null)
+            {
+                return NotFound();
+            }
+
+            toDo.IsRemoved = true;
+            toDo.RemovedDate = DateTime.Now;
+
+            await _toDoDbContext.SaveChangesAsync();
             return Ok(toDo);
         }
     }
