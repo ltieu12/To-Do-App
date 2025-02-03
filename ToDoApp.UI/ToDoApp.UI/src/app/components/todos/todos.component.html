@@ -22,7 +22,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let task of toDoList">
-                <th>{{ task.description }}</th>
+                <th [class.stroke]="task.isCompleted">{{ task.description }}</th>
                 <td>{{ task.createdDate | date: 'MM/dd/yyyy hh:mm a' }}</td>
                 <td><input type="checkbox" [checked]="task.isCompleted" (change)="onCompletedChange(task.id, task)"></td>
                 <td><a [routerLink]="[]" (click)="removeTask(task.id)">Remove</a></td>
