@@ -26,7 +26,7 @@ namespace ToDoApp.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> addToDo(ToDo toDoTask)
+        public async Task<IActionResult> AddToDo(ToDo toDoTask)
         {
             toDoTask.Id = Guid.NewGuid();
             _toDoDbContext.ToDos.Add(toDoTask);
