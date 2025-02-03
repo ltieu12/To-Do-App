@@ -20,4 +20,8 @@ export class TodoService {
     
     return this.http.post<ToDo>(this.baseApiUrl + '/api/ToDo', newTask);
   }
+
+  updateTask(id: string, updateTask: ToDo): Observable<ToDo> {
+    return this.http.put<ToDo>(this.baseApiUrl + '/api/ToDo/' + id, updateTask);
+  }
 }

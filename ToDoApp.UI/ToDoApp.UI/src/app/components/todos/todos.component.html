@@ -4,7 +4,7 @@
         <form #form="ngForm" (ngSubmit)="addTask()">
             <div class="mb-3">
               <label for="description" class="form-label">Description</label>
-              <input type="text" class="form-control" id="description" name="description" (ngModel)="newTask.description">
+              <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newTask.description">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
@@ -22,8 +22,8 @@
             <tbody>
               <tr *ngFor="let task of toDoList">
                 <th>{{ task.description }}</th>
-                <td>{{ task.createdDate }}</td>
-                <td>{{ task.isCompleted }}</td>
+                <td>{{ task.createdDate | date: 'MM/dd/yyyy hh:mm a' }}</td>
+                <td><input type="checkbox" [checked]="task.isCompleted" (change)="onCompletedChange(task.id, task)"></td>
               </tr>
             </tbody>
           </table>

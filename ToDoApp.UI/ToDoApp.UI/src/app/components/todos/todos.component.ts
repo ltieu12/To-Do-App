@@ -42,4 +42,13 @@ export class TodosComponent implements OnInit {
       }
     });
   }
+
+  onCompletedChange(id: string, task: ToDo) {
+    task.isCompleted = !task.isCompleted;
+    this.toDoService.updateTask(id, task).subscribe({
+      next: () => {
+        this.getAllTasks();
+      }
+    });
+  }
 }
