@@ -24,6 +24,10 @@ export class TodosComponent implements OnInit {
   constructor(private toDoService: TodoService) {}
 
   ngOnInit(): void {
+    this.getAllTasks();
+  }
+
+  getAllTasks() {
     this.toDoService.getAllTasks().subscribe({
       next: (toDos) => {
         this.toDoList = toDos;
@@ -33,7 +37,9 @@ export class TodosComponent implements OnInit {
 
   addTask() {
     this.toDoService.addTask(this.newTask).subscribe({
-
+      next: () => {
+        this.getAllTasks();
+      }
     });
   }
 }
