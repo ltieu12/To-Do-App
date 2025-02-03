@@ -58,7 +58,7 @@ namespace ToDoApp.API.Controllers
 
         [HttpDelete]
         [Route("{id:Guid}")]
-        public async Task<IActionResult> RemoveToDo([FromRoute] Guid id, ToDo toDoRemoveReq)
+        public async Task<IActionResult> RemoveToDo([FromRoute] Guid id)
         {
             var toDo = await _toDoDbContext.ToDos.FindAsync(id);
 

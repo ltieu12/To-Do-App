@@ -3,11 +3,12 @@ import { ToDo } from '../../models/todo.model';
 import { TodoService } from '../../services/todo.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css'
 })
@@ -50,5 +51,13 @@ export class TodosComponent implements OnInit {
         this.getAllTasks();
       }
     });
+  }
+
+  removeTask(id: string) {
+    this.toDoService.removeTask(id).subscribe({
+      next: () => {
+        this.getAllTasks();
+      }
+    })
   }
 }
