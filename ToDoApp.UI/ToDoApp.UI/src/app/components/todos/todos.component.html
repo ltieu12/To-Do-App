@@ -1,10 +1,10 @@
 <div class="container">
     <div class="row">
         <h1>Add Task</h1>
-        <form>
+        <form #form="ngForm" (ngSubmit)="addTask()">
             <div class="mb-3">
               <label for="description" class="form-label">Description</label>
-              <input type="text" class="form-control" id="description">
+              <input type="text" class="form-control" id="description" name="description" (ngModel)="newTask.description">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
@@ -20,10 +20,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let toDo of toDos">
-                <th>{{ toDo.description }}</th>
-                <td>{{ toDo.createdDate }}</td>
-                <td>{{ toDo.isCompleted }}</td>
+              <tr *ngFor="let task of toDoList">
+                <th>{{ task.description }}</th>
+                <td>{{ task.createdDate }}</td>
+                <td>{{ task.isCompleted }}</td>
               </tr>
             </tbody>
           </table>

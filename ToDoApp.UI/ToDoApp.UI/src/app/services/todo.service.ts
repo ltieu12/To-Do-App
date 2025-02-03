@@ -11,7 +11,13 @@ export class TodoService {
   
   constructor(private http: HttpClient) { }
 
-  getAllToDos(): Observable<ToDo[]> {
+  getAllTasks(): Observable<ToDo[]> {
     return this.http.get<ToDo[]>(this.baseApiUrl + '/api/ToDo');
+  }
+
+  addTask(newTask: ToDo): Observable<ToDo> {
+    newTask.id = '00000000-0000-0000-0000-000000000000';
+    
+    return this.http.post<ToDo>(this.baseApiUrl + '/api/ToDo', newTask);
   }
 }
