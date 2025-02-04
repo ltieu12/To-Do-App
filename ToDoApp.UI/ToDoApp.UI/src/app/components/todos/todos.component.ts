@@ -20,6 +20,8 @@ export class TodosComponent implements OnInit {
     createdDate: new Date(),
     isCompleted: false,
     completedDate: new Date(),
+    isRemoved: false,
+    removedDate: new Date()
   };
   
   constructor(private toDoService: TodoService) {}

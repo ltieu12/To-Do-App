@@ -3,5 +3,7 @@ export interface ToDo {
     description: string,
     createdDate: Date,
     isCompleted: boolean,
-    completedDate: Date
+    completedDate: Date,
+    isRemoved: boolean,
+    removedDate: Date
 }

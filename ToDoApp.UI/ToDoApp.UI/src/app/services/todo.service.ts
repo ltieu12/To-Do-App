@@ -27,4 +27,8 @@ export class TodoService {
   removeTask(id: string): Observable<ToDo> {
     return this.http.delete<ToDo>(this.baseApiUrl + '/api/ToDo/' + id);
   }
+
+  getAllDeletedTasks(): Observable<ToDo[]> {
+    return this.http.get<ToDo[]>(this.baseApiUrl + '/api/ToDo/get-deleted');
+  }
 }

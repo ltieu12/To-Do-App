@@ -28,6 +28,18 @@ namespace ToDoApp.API.Controllers
             return Ok(toDos);
         }
 
+        [HttpGet]
+        [Route("get-deleted")]
+        public async Task<IActionResult> GetDeletedToDos()
+        {
+            var deletedToDos = await _toDoDbContext.ToDos
+                .Where (x => x.IsRemoved == true)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
+
+            return Ok(deletedToDos);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddToDo(ToDo toDoTask)
         {

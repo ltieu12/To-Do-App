@@ -1,1 +1,25 @@
-<p>deleted-todos works!</p>
+<div class="container">
+    <div class="row">
+        <h1>Deleted To Do List</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Task</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Deleted Date</th>
+                <th scope="col">Completed?</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let task of removedToDos">
+                <th [class.stroke]="task.isCompleted">{{ task.description }}</th>
+                <td>{{ task.createdDate | date: 'MM/dd/yyyy hh:mm a' }}</td>
+                <td>{{ task.removedDate | date: 'MM/dd/yyyy hh:mm a' }}</td>
+                <td>{{ task.isCompleted }}</td>
+                <td><a [routerLink]="[]">Undo</a></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
