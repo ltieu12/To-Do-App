@@ -5,4 +5,4 @@ This web application helps users to keep track of their To-Do List. The app cont
 - Delete tasks
 - Undo deleted tasks
 
-This is a full-stack web app built with Angular 18, ASP.NET and Bootstrap.
+This is a full-stack web app built with Angular 18 and Bootstrap for responsive front-end, ASP.NET and MySQL for APIs and data management.
