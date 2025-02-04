@@ -68,6 +68,25 @@ namespace ToDoApp.API.Controllers
             return Ok(toDo);
         }
 
+        [HttpPut]
+        [Route("undo-deleted/{id:Guid}")]
+        public async Task<IActionResult> UndoDeletedToDo([FromRoute] Guid id, ToDo toDoUndoReq)
+        {
+            var undoToDo = await _toDoDbContext.ToDos.FindAsync(id);
+
+            if (undoToDo == null)
+            {
+                return NotFound();
+            }
+
+            undoToDo.IsRemoved = !toDoUndoReq.IsRemoved;
+            undoToDo.RemovedDate = null;
+            await _toDoDbContext.SaveChangesAsync();
+
+            return Ok(undoToDo);
+
+        }
+
         [HttpDelete]
         [Route("{id:Guid}")]
         public async Task<IActionResult> RemoveToDo([FromRoute] Guid id)

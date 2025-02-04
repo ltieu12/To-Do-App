@@ -17,7 +17,7 @@
                 <td>{{ task.createdDate | date: 'MM/dd/yyyy hh:mm a' }}</td>
                 <td>{{ task.removedDate | date: 'MM/dd/yyyy hh:mm a' }}</td>
                 <td>{{ task.isCompleted }}</td>
-                <td><a [routerLink]="[]">Undo</a></td>
+                <td><a [routerLink]="[]" (click)="undoDeletedTask(task.id, task)">Undo</a></td>
               </tr>
             </tbody>
           </table>

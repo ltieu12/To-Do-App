@@ -17,10 +17,22 @@ export class DeletedTodosComponent implements OnInit {
   constructor(private toDoService: TodoService) {}
 
   ngOnInit(): void {
+    this.getAllDeletedTasks();
+  }
+
+  getAllDeletedTasks() {
     this.toDoService.getAllDeletedTasks().subscribe({
       next: (response) => {
         this.removedToDos = response;
       } 
+    })
+  }
+
+  undoDeletedTask(id: string, deletedTask: ToDo) {
+    this.toDoService.undoDeletedTask(id, deletedTask).subscribe({
+      next: () => {
+        this.getAllDeletedTasks();
+      }
     })
   }
 }
